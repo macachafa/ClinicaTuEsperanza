@@ -1,5 +1,6 @@
 package com.misiontic.clinica_ms.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -8,7 +9,8 @@ public class History {
 
     @Id
     private Integer patientDocument;
-    private  Date visit;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date visit;
     private String description;
     private String prescription;
 
