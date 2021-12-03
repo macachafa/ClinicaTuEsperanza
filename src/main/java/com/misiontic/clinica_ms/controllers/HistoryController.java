@@ -35,10 +35,10 @@ public class HistoryController {
     }
 
     @PutMapping("/history/{patientDocument}")
-    History updatePatientHistory(@PathVariable Integer document, @RequestBody History patientHistoryId){
+    History updatePatientHistory(@PathVariable Integer patientDocument, @RequestBody History patientHistoryId){
         History patientHistoryDB = historyRepository
-                .findById(document)
-                .orElseThrow(() -> new PatientHistoryNotFoundException("No se puede actualizar historia clinica del paciente con el ID: " + document));
+                .findById(patientDocument)
+                .orElseThrow(() -> new PatientHistoryNotFoundException("No se puede actualizar historia clinica del paciente con el ID: " + patientDocument));
 
         patientHistoryDB.setPatientDocument(patientHistoryId.getPatientDocument());
         patientHistoryDB.setVisit(patientHistoryId.getVisit());
@@ -48,10 +48,10 @@ public class HistoryController {
     }
 
     @DeleteMapping("/history/{patientDocument}")
-    void deletePatientHistory(@PathVariable Integer document){
+    void deletePatientHistory(@PathVariable Integer patientDocument){
         History patientHistory = historyRepository
-                .findById(document)
-                .orElseThrow(() -> new PatientHistoryNotFoundException("No se puede eliminar historia del paciente con el ID: " + document));
+                .findById(patientDocument)
+                .orElseThrow(() -> new PatientHistoryNotFoundException("No se puede eliminar historia del paciente con el ID: " + patientDocument));
         historyRepository.delete(patientHistory);
     }
 

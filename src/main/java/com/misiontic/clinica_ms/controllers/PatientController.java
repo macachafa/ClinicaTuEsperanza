@@ -14,9 +14,9 @@ public class PatientController {
     }
 
     @GetMapping("/patient/{id}")
-     Patient getPatient(@PathVariable Integer document){
-        return patientRepository.findById(document)
-                .orElseThrow(() -> new PatientNotFoundException("No se encontró paciente con el ID: " + document));
+     Patient getPatient(@PathVariable Integer id){
+        return patientRepository.findById(id)
+                .orElseThrow(() -> new PatientNotFoundException("No se encontró paciente con el ID: " + id));
     }
 
     @PostMapping("/patient")
@@ -25,10 +25,10 @@ public class PatientController {
     }
 
     @PutMapping("/patient/{id}")
-    Patient updatePatient(@PathVariable Integer document, @RequestBody Patient patient){
+    Patient updatePatient(@PathVariable Integer id, @RequestBody Patient patient){
         Patient patientDB = patientRepository
-                .findById(document)
-                .orElseThrow(() -> new PatientNotFoundException("No se puede actualizar paciente con el ID: " + document));
+                .findById(id)
+                .orElseThrow(() -> new PatientNotFoundException("No se puede actualizar paciente con el ID: " + id));
 
         patientDB.setId(patient.getId());
         patientDB.setName(patient.getName());
@@ -42,10 +42,10 @@ public class PatientController {
     }
 
     @DeleteMapping("/patient/{id}")
-    void deletePatient(@PathVariable Integer document){
+    void deletePatient(@PathVariable Integer id){
         Patient patient = patientRepository
-                .findById(document)
-                .orElseThrow(() -> new PatientNotFoundException("No se puede eliminar paciente con el ID: " + document));
+                .findById(id)
+                .orElseThrow(() -> new PatientNotFoundException("No se puede eliminar paciente con el ID: " + id));
         patientRepository.delete(patient);
     }
 }
