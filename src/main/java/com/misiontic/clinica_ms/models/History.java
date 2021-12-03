@@ -1,8 +1,6 @@
 package com.misiontic.clinica_ms.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 

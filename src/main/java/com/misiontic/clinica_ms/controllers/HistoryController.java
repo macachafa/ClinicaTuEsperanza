@@ -1,17 +1,10 @@
 package com.misiontic.clinica_ms.controllers;
 
 import com.misiontic.clinica_ms.exceptions.PatientHistoryNotFoundException;
-import com.misiontic.clinica_ms.exceptions.PatientNotFoundException;
 import com.misiontic.clinica_ms.models.History;
-import com.misiontic.clinica_ms.models.Patient;
 import com.misiontic.clinica_ms.repositories.HistoryRepository;
 import com.misiontic.clinica_ms.repositories.PatientRepository;
 import org.springframework.web.bind.annotation.*;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 
 @RestController
 public class HistoryController {
